@@ -294,6 +294,49 @@ export const SOURCE_TIERS: Record<string, number> = {
   'GNN Animals': 3,
   'GNN Health': 3,
   'GNN Heroes': 3,
+
+  // Tier 2 - India Bharat Monitor sources
+  'The Hindu': 2,
+  'NDTV India': 2,
+  'Indian Express': 2,
+  'Times of India': 2,
+  'Hindustan Times': 2,
+  'India Today': 2,
+  'Mint': 2,
+  'Business Standard': 2,
+  'ANI News': 2,
+  'PTI News': 1,
+  'WION India': 2,
+  'The Wire India': 3,
+  'Scroll.in': 3,
+  'Print India': 3,
+  'The Quint': 3,
+  'MEA Statements': 1,
+  'PMO India': 1,
+  'ORF India': 2,
+  'ORF Diplomacy': 2,
+  'IDSA India': 2,
+  'Economic Times Markets': 2,
+  'Mint Markets': 2,
+  'Inc42 India': 3,
+  'India Fintech': 3,
+  'BBC India': 2,
+  'Reuters India': 1,
+  'Bloomberg India': 1,
+  'FT India': 2,
+  'South China Morning Post India': 2,
+  'Al Jazeera India': 2,
+  // India leader feeds (via news coverage of tweets/statements)
+  'PM Modi Updates': 1,
+  'PM Modi Tweets': 1,
+  'Jaishankar MEA': 1,
+  'Jaishankar Tweets': 1,
+  'Defence Minister': 1,
+  'Finance Minister': 1,
+  'NSA Doval': 1,
+  'President Murmu': 1,
+  'India Opposition': 2,
+  'CDS India': 1,
 };
 
 export function getSourceTier(sourceName: string): number {
@@ -380,6 +423,25 @@ export const SOURCE_TYPES: Record<string, SourceType> = {
   'This Week in Startups': 'tech', 'The Twenty Minute VC': 'tech',
   'Hard Fork (NYT)': 'tech', 'Pivot (Vox)': 'tech', 'Stratechery': 'tech',
   'Benedict Evans': 'tech', 'How I Built This': 'tech', 'Masters of Scale': 'tech',
+
+  // India Bharat Monitor sources
+  'The Hindu': 'mainstream', 'NDTV India': 'mainstream', 'Indian Express': 'mainstream',
+  'Times of India': 'mainstream', 'Hindustan Times': 'mainstream', 'India Today': 'mainstream',
+  'Mint': 'market', 'Business Standard': 'market', 'ANI News': 'wire', 'PTI News': 'wire',
+  'WION India': 'mainstream', 'The Wire India': 'mainstream', 'Scroll.in': 'mainstream',
+  'Print India': 'mainstream', 'The Quint': 'mainstream',
+  'MEA Statements': 'gov', 'PMO India': 'gov',
+  'ORF India': 'intel', 'ORF Diplomacy': 'intel', 'IDSA India': 'intel',
+  'Economic Times Markets': 'market', 'Mint Markets': 'market',
+  'Inc42 India': 'tech', 'India Fintech': 'market',
+  'BBC India': 'mainstream', 'Reuters India': 'wire', 'Bloomberg India': 'market',
+  'FT India': 'market', 'South China Morning Post India': 'mainstream',
+  'Al Jazeera India': 'mainstream',
+  'PM Modi Updates': 'gov', 'PM Modi Tweets': 'gov',
+  'Jaishankar MEA': 'gov', 'Jaishankar Tweets': 'gov',
+  'Defence Minister': 'gov', 'Finance Minister': 'gov',
+  'NSA Doval': 'intel', 'President Murmu': 'gov',
+  'India Opposition': 'mainstream', 'CDS India': 'gov',
 };
 
 export function getSourceType(sourceName: string): SourceType {
@@ -1068,26 +1130,32 @@ const INDIA_FEEDS: Record<string, Feed[]> = {
     { name: 'India Today', url: rss('https://news.google.com/rss/search?q=site:indiatoday.in+when:1d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'Mint', url: rss('https://www.livemint.com/rss/news') },
     { name: 'Business Standard', url: rss('https://www.business-standard.com/rss/home_page_top_stories.rss') },
-    { name: 'Wire India', url: rss('https://thewire.in/feed') },
+    { name: 'The Wire India', url: rss('https://thewire.in/feed') },
     { name: 'Scroll.in', url: rss('https://scroll.in/feed') },
     { name: 'Print India', url: rss('https://theprint.in/feed/') },
     { name: 'ANI News', url: rss('https://news.google.com/rss/search?q=site:aninews.in+when:1d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'PTI News', url: rss('https://news.google.com/rss/search?q=PTI+India+news+when:1d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'WION India', url: rss('https://news.google.com/rss/search?q=site:wionews.com+India+when:1d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'The Quint', url: rss('https://news.google.com/rss/search?q=site:thequint.com+when:1d&hl=en-IN&gl=IN&ceid=IN:en') },
   ],
 
-  // Indian leader statements & social media (tracked via news coverage)
+  // Indian leader statements & social media tracking (via news coverage of tweets/posts)
   leaders: [
-    { name: 'PM Modi Updates', url: rss('https://news.google.com/rss/search?q=("Narendra+Modi"+OR+"PM+Modi")+statement+OR+speech+OR+tweet+when:2d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'PM Modi Tweets', url: rss('https://news.google.com/rss/search?q=("PM+Modi"+OR+"Narendra+Modi")+tweet+OR+posts+OR+says+OR+statement+when:1d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'PM Modi Updates', url: rss('https://news.google.com/rss/search?q=("Narendra+Modi"+OR+"PM+Modi")+speech+OR+address+OR+announces+when:2d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'Jaishankar MEA', url: rss('https://news.google.com/rss/search?q=("S.+Jaishankar"+OR+"EAM+Jaishankar"+OR+"External+Affairs+Minister")+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'Jaishankar Tweets', url: rss('https://news.google.com/rss/search?q=("Jaishankar"+tweet+OR+posts+OR+X+post+OR+remarks)+when:2d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'Defence Minister', url: rss('https://news.google.com/rss/search?q=("Rajnath+Singh"+OR+"Defence+Minister+India")+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'Finance Minister', url: rss('https://news.google.com/rss/search?q=("Nirmala+Sitharaman"+OR+"Finance+Minister+India")+economy+OR+market+OR+budget+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'NSA Doval', url: rss('https://news.google.com/rss/search?q=("Ajit+Doval"+OR+"National+Security+Advisor+India")+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'President Murmu', url: rss('https://news.google.com/rss/search?q=("Droupadi+Murmu"+OR+"President+of+India")+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'MEA Statements', url: rss('https://www.mea.gov.in/rss/pressrelease.xml') },
     { name: 'PMO India', url: rss('https://news.google.com/rss/search?q=site:pmindia.gov.in+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Opposition', url: rss('https://news.google.com/rss/search?q=("Rahul+Gandhi"+OR+"Mallikarjun+Kharge"+OR+"Akhilesh+Yadav")+statement+OR+tweet+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'CDS India', url: rss('https://news.google.com/rss/search?q=("Chief+of+Defence+Staff"+OR+"CDS+India"+OR+"Anil+Chauhan")+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
   ],
 
-  // War impact on India (Ukraine, Middle East, regional conflicts)
+  // War impact on India — geopolitical risks affecting Indian economy, markets and security
   warimpact: [
     { name: 'India-Ukraine War Impact', url: rss('https://news.google.com/rss/search?q=(India+impact+Ukraine+war+OR+India+Russia+war+sanctions)+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'India Oil Prices', url: rss('https://news.google.com/rss/search?q=(India+crude+oil+price+OR+India+fuel+price+OR+petrol+diesel+India)+when:2d&hl=en-IN&gl=IN&ceid=IN:en') },
@@ -1097,6 +1165,10 @@ const INDIA_FEEDS: Record<string, Feed[]> = {
     { name: 'India Pakistan', url: rss('https://news.google.com/rss/search?q=(India+Pakistan+tensions+OR+LoC+ceasefire+OR+Kashmir+conflict)+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'India Supply Chain', url: rss('https://news.google.com/rss/search?q=(India+supply+chain+disruption+OR+India+imports+exports+war+impact)+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'India Inflation War', url: rss('https://news.google.com/rss/search?q=(India+inflation+war+OR+India+wheat+fertilizer+Ukraine)+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Sanctions Impact', url: rss('https://news.google.com/rss/search?q=(India+Russia+sanctions+OR+India+Iran+sanctions+OR+India+secondary+sanctions)+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Rupee War', url: rss('https://news.google.com/rss/search?q=(Indian+rupee+fall+OR+INR+depreciation+geopolitical+OR+rupee+war+impact)+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Market War Risk', url: rss('https://news.google.com/rss/search?q=(India+market+geopolitical+risk+OR+Sensex+Nifty+war+impact+OR+India+FII+outflow+war)+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Gaza Conflict', url: rss('https://news.google.com/rss/search?q=(India+Gaza+Israel+conflict+OR+India+Palestine+OR+India+Middle+East+position)+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
   ],
 
   // Indian markets & economy
@@ -1107,6 +1179,9 @@ const INDIA_FEEDS: Record<string, Feed[]> = {
     { name: 'RBI Updates', url: rss('https://news.google.com/rss/search?q=(RBI+monetary+policy+OR+Reserve+Bank+India+interest+rate+OR+INR+rupee)+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'Mint Markets', url: rss('https://www.livemint.com/rss/markets') },
     { name: 'India FDI', url: rss('https://news.google.com/rss/search?q=(India+FDI+investment+OR+Make+in+India+OR+India+trade+deal)+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Equities', url: rss('https://news.google.com/rss/search?q=(Indian+equities+OR+Nifty+outlook+OR+India+stock+market+today)+when:1d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'Inc42 India', url: rss('https://inc42.com/feed/') },
+    { name: 'India Fintech', url: rss('https://news.google.com/rss/search?q=(India+fintech+OR+UPI+OR+NPCI+OR+India+digital+payments)+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
   ],
 
   // Indian foreign policy & diplomacy
@@ -1116,6 +1191,11 @@ const INDIA_FEEDS: Record<string, Feed[]> = {
     { name: 'India SCO BRICS', url: rss('https://news.google.com/rss/search?q=(India+SCO+OR+India+BRICS+OR+India+multilateral)+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'India UN', url: rss('https://news.google.com/rss/search?q=(India+United+Nations+OR+India+UNSC+OR+India+UN+vote)+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'India Neighbours', url: rss('https://news.google.com/rss/search?q=(India+Nepal+OR+India+Sri+Lanka+OR+India+Bangladesh+OR+India+Myanmar)+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India G20 G7', url: rss('https://news.google.com/rss/search?q=(India+G20+OR+India+G7+OR+India+global+south)+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India US Relations', url: rss('https://news.google.com/rss/search?q=(India+USA+relations+OR+India+Washington+OR+"US-India")+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India China Relations', url: rss('https://news.google.com/rss/search?q=(India+China+relations+OR+India+Beijing+diplomatic+OR+"India-China")+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Russia Relations', url: rss('https://news.google.com/rss/search?q=(India+Russia+strategic+OR+India+Moscow+relations+OR+"India-Russia")+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'ORF Diplomacy', url: rss('https://news.google.com/rss/search?q=(site:orfonline.org+India+diplomacy+OR+foreign+policy)+when:14d&hl=en-IN&gl=IN&ceid=IN:en') },
   ],
 
   // Indian defense & security
@@ -1125,6 +1205,9 @@ const INDIA_FEEDS: Record<string, Feed[]> = {
     { name: 'ORF India', url: rss('https://www.orfonline.org/feed/') },
     { name: 'IDSA India', url: rss('https://news.google.com/rss/search?q=site:idsa.in+when:14d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'India BrahMos', url: rss('https://news.google.com/rss/search?q=(India+BrahMos+OR+India+missile+defence+OR+Agni+OR+DRDO)+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Space Defense', url: rss('https://news.google.com/rss/search?q=(ISRO+OR+India+space+defense+OR+India+satellite+military)+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Nuclear', url: rss('https://news.google.com/rss/search?q=(India+nuclear+doctrine+OR+India+nuclear+arsenal+OR+India+NPT+CTBT)+when:14d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'India Terror Threat', url: rss('https://news.google.com/rss/search?q=(India+terrorism+OR+India+Naxal+OR+India+insurgency+OR+India+IB+RAW)+when:7d&hl=en-IN&gl=IN&ceid=IN:en') },
   ],
 
   // World news with India lens
@@ -1133,6 +1216,9 @@ const INDIA_FEEDS: Record<string, Feed[]> = {
     { name: 'BBC India', url: rss('https://feeds.bbci.co.uk/news/world/asia/india/rss.xml') },
     { name: 'Al Jazeera India', url: rss('https://news.google.com/rss/search?q=site:aljazeera.com+India+when:2d&hl=en-IN&gl=IN&ceid=IN:en') },
     { name: 'Global India News', url: rss('https://news.google.com/rss/search?q=India+(war+OR+conflict+OR+sanctions+OR+economy+OR+election)+when:1d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'South China Morning Post India', url: rss('https://news.google.com/rss/search?q=site:scmp.com+India+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'FT India', url: rss('https://news.google.com/rss/search?q=site:ft.com+India+when:3d&hl=en-IN&gl=IN&ceid=IN:en') },
+    { name: 'Bloomberg India', url: rss('https://news.google.com/rss/search?q=site:bloomberg.com+India+when:2d&hl=en-IN&gl=IN&ceid=IN:en') },
   ],
 };
 
@@ -1178,6 +1264,15 @@ export const SOURCE_REGION_MAP: Record<string, { labelKey: string; feedKeys: str
   dealsCorpFin: { labelKey: 'header.sourceRegionDeals', feedKeys: ['institutional', 'derivatives'] },
   finRegulation: { labelKey: 'header.sourceRegionFinRegulation', feedKeys: ['regulation'] },
   gulfMena: { labelKey: 'header.sourceRegionGulfMena', feedKeys: ['gccNews'] },
+
+  // India variant regions (Bharat Monitor)
+  indiaTopNews: { labelKey: 'header.sourceRegionIndiaTopNews', feedKeys: ['india'] },
+  indiaLeaders: { labelKey: 'header.sourceRegionIndiaLeaders', feedKeys: ['leaders'] },
+  indiaWarImpact: { labelKey: 'header.sourceRegionIndiaWarImpact', feedKeys: ['warimpact'] },
+  indiaBiz: { labelKey: 'header.sourceRegionIndiaBiz', feedKeys: ['indiabiz'] },
+  indiaDiplomacy: { labelKey: 'header.sourceRegionIndiaDiplomacy', feedKeys: ['diplomacy'] },
+  indiaDefense: { labelKey: 'header.sourceRegionIndiaDefense', feedKeys: ['indiadefense'] },
+  worldIndia: { labelKey: 'header.sourceRegionWorldIndia', feedKeys: ['worldindia'] },
 };
 
 export const INTEL_SOURCES: Feed[] = [

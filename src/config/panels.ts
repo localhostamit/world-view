@@ -763,6 +763,33 @@ export const PANEL_CATEGORY_MAP: Record<string, { labelKey: string; panelKeys: s
     panelKeys: ['gulf-economies', 'gcc-investments', 'gccNews', 'monitors', 'world-clock'],
     variants: ['finance'],
   },
+
+  // India variant (Bharat Monitor)
+  indiaNews: {
+    labelKey: 'header.panelCatIndiaNews',
+    panelKeys: ['india', 'leaders', 'worldindia', 'live-news', 'live-webcams', 'insights'],
+    variants: ['india'],
+  },
+  indiaConflict: {
+    labelKey: 'header.panelCatIndiaConflict',
+    panelKeys: ['warimpact', 'indiadefense', 'strategic-risk', 'cii'],
+    variants: ['india'],
+  },
+  indiaDiplomacy: {
+    labelKey: 'header.panelCatIndiaDiplomacy',
+    panelKeys: ['diplomacy'],
+    variants: ['india'],
+  },
+  indiaMarkets: {
+    labelKey: 'header.panelCatIndiaMarkets',
+    panelKeys: ['indiabiz', 'markets', 'commodities', 'economic', 'macro-signals'],
+    variants: ['india'],
+  },
+  indiaTracking: {
+    labelKey: 'header.panelCatIndiaTracking',
+    panelKeys: ['monitors', 'world-clock', 'polymarket'],
+    variants: ['india'],
+  },
 };
 
 // Monitor palette — fixed category colors persisted to localStorage (not theme-dependent)

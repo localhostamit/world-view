@@ -168,6 +168,13 @@
     "sourceRegionDeals": "Deals & Corporate",
     "sourceRegionFinRegulation": "Financial Regulation",
     "sourceRegionGulfMena": "Gulf & MENA",
+    "sourceRegionIndiaTopNews": "India Top News",
+    "sourceRegionIndiaLeaders": "Indian Leaders",
+    "sourceRegionIndiaWarImpact": "War Impact on India",
+    "sourceRegionIndiaBiz": "India Markets",
+    "sourceRegionIndiaDiplomacy": "India Diplomacy",
+    "sourceRegionIndiaDefense": "India Defence",
+    "sourceRegionWorldIndia": "World & India",
     "filterPanels": "Filter panels...",
     "panelCatCore": "Core",
     "panelCatIntelligence": "Intelligence",
@@ -185,7 +192,12 @@
     "panelCatCentralBanks": "Central Banks & Econ",
     "panelCatDeals": "Deals & Institutional",
     "panelCatGulfMena": "Gulf & MENA",
-    "panelCatTradePolicy": "Trade Policy"
+    "panelCatTradePolicy": "Trade Policy",
+    "panelCatIndiaNews": "India News & Media",
+    "panelCatIndiaConflict": "War & Security",
+    "panelCatIndiaDiplomacy": "Diplomacy",
+    "panelCatIndiaMarkets": "Markets & Economy",
+    "panelCatIndiaTracking": "Tracking & Tools"
   },
   "panels": {
     "liveNews": "Live News",
